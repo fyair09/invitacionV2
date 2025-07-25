@@ -1,8 +1,26 @@
-<!-- HTML -->
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Incrustado Responsivo</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<div class="pdf-container">
-  <iframe src="my.pdf" frameborder="0"></iframe>
-</div>
+<body>
+    <header>
+        <h1>Mi Documento PDF</h1>
+    </header>
+
+    <main>
+        <div class="pdf-container">
+            <iframe src="pdf/my.pdf" type="application/pdf" frameborder="0">
+                Este navegador no soporta la incrustación de PDFs. Puedes <a href="https://www.africau.edu/images/default/sample.pdf">descargar el PDF aquí</a>.
+            </iframe>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ejemplo de PDF Incrustado</p>
+    </footer>
+</body>
+</html>
