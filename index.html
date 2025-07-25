@@ -3,33 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M&Y</title>
+  <title>m&y</title>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background-color: #f2f2f2;
+      background: #f2f2f2;
+    }
+
+    h2 {
+      text-align: center;
+      padding: 1rem;
     }
 
     .pdf-container {
       position: relative;
       width: 100%;
-      padding-top: 141.42%; /* Relación A4 vertical: 1 / 0.707 = 1.4142 */
+      padding-top: 141.42%; /* proporción vertical A4 */
       background: #ccc;
     }
 
     .pdf-container iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       border: none;
+    }
+
+    #fallback-link {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #fallback-link a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      font-size: 1.1rem;
     }
 
     @media (max-width: 768px) {
       .pdf-container {
-        padding-top: 160%; /* más alto en móviles para mejor proporción */
+        padding-top: 160%;
       }
     }
   </style>
@@ -37,15 +53,38 @@
 <body>
 
 
-  <div class="pdf-container">
+  <div class="pdf-container" id="pdfWrapper">
     <iframe 
+      id="pdfIframe"
       src="https://drive.google.com/file/d/1RejLs9RWUc1YVKhkUGZlRUFUJuDO2Pob/preview"
-
-      allow="autoplay"
       allowfullscreen
       loading="lazy">
     </iframe>
   </div>
+
+  <div id="fallback-link">
+    <p>Tu navegador no permite visualizar el PDF directamente.</p>
+    <a href="https://drive.google.com/uc?export=download&id=1RejLs9RWUc1YVKhkUGZlRUFUJuDO2Pob" target="_blank">Haz clic aquí para ver o descargar el PDF</a>
+  </div>
+
+  <script>
+    // Espera unos segundos para detectar si el PDF carga correctamente
+    window.addEventListener('DOMContentLoaded', () => {
+      const iframe = document.getElementById('pdfIframe');
+      const fallback = document.getElementById('fallback-link');
+      const wrapper = document.getElementById('pdfWrapper');
+
+      // Prueba si el iframe carga en 5 segundos
+      const timeout = setTimeout(() => {
+        // Si después de 5 seg el iframe no carga, lo ocultamos
+        wrapper.style.display = 'none';
+        fallback.style.display = 'block';
+      }, 5000);
+
+      // Si carga, cancelamos el fallback
+      iframe.onload = () => clearTimeout(timeout);
+    });
+  </script>
 
 </body>
 </html>
