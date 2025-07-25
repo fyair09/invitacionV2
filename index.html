@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDF Responsivo en Todos los Navegadores</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M&Y</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: sans-serif;
-      background-color: #f4f4f4;
-    }
-
-    .wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+      background-color: #f2f2f2;
     }
 
     .pdf-container {
       position: relative;
       width: 100%;
-      padding-top: 129.4%; /* 11/8.5 = 1.294, proporción carta */
+      padding-top: 141.42%; /* Relación A4 vertical: 1 / 0.707 = 1.4142 */
+      background: #ccc;
     }
 
     .pdf-container iframe {
@@ -37,63 +25,27 @@
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      background: white;
     }
 
     @media (max-width: 768px) {
-      .wrapper {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 1.2rem;
-      }
-
       .pdf-container {
-        padding-top: 150%; /* Más alto en móviles */
+        padding-top: 160%; /* más alto en móviles para mejor proporción */
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <h1>Visualizador PDF Responsivo</h1>
 
-    <div class="pdf-container" id="pdfWrapper">
-      <iframe id="pdfFrame"
-        src="pdf/my.pdf#toolbar=1&navpanes=0&scrollbar=0"
-        allow="fullscreen"
-        loading="lazy"
-      ></iframe>
-    </div>
+  <div class="pdf-container">
+    <iframe 
+      src="https://drive.google.com/file/d/1y4j8n9e_2pCAwBn-D9QQ7ON2J0iglsSV/preview"
+
+      allow="autoplay"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
   </div>
 
-  <script>
-    function detectPdfSupport() {
-      const iframe = document.getElementById('pdfFrame');
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-      const isAndroid = /Android/.test(navigator.userAgent);
-      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-      // Safari y WebView en iOS no siempre renderizan PDFs en iframes
-      if (isIOS || (isAndroid && isSafari)) {
-        // Abrir el PDF en una nueva pestaña como fallback
-        const wrapper = document.getElementById('pdfWrapper');
-        wrapper.innerHTML = `
-          <p style="text-align:center">
-            Tu navegador no soporta PDF embebido. 
-            <a href="tu-archivo.pdf" target="_blank">Haz clic aquí para ver el PDF</a>
-          </p>
-        `;
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', detectPdfSupport);
-  </script>
-
 </body>
-</html>
 </html>
