@@ -24,3 +24,45 @@ body {
         touch-action: pan-y pinch-zoom;
       }
     }
+
+        .music-widget {
+      width: 300px;
+      background: #1e1e1e;
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .music-widget h4 {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .controls button {
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .controls input[type="range"] {
+      flex: 1;
+    }
+
+img {
+      pointer-events: none;   /* No permite arrastrar la imagen */
+      -webkit-user-drag: none;
+      user-select: none;
+    }
