@@ -1,86 +1,26 @@
-/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-header {
-    background-color: #007bff;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-main {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #333;
-    color: white;
-    margin-top: 20px;
-}
-
-/* Contenedor del PDF para mantener la proporción */
-.pdf-container {
-    position: relative;
-    width: 100%;
-    /* Ajusta esta proporción según tus necesidades. Un 1.414 es una aproximación para A4 (297/210) */
-    padding-bottom: 141.4%; /* Altura/Ancho * 100% (Ej: para 4:3 sería 75%, para 16:9 sería 56.25%) */
-    height: 0;
-    overflow: hidden;
-    background-color: #eee; /* Fondo mientras carga el PDF */
-}
-
-.pdf-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* Media Queries para responsividad */
-
-/* Para pantallas más pequeñas que 768px (típicamente tablets y móviles) */
-@media (max-width: 768px) {
-    main {
-        margin: 10px;
-        padding: 15px;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      font-family: sans-serif;
     }
 
-    h1 {
-        font-size: 1.8rem;
+    .img-wrapper {
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 100vh; /* Para mantener la pantalla aprovechada */
     }
 
-    /* Ajuste para el tamaño del PDF en móviles si es necesario */
-    .pdf-container {
-        padding-bottom: 150%; /* Puedes ajustar esta proporción para móviles si quieres que sea más alto */
-    }
-}
-
-/* Para pantallas más pequeñas que 480px (típicamente móviles) */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;
+    .img-wrapper img {
+      width: 100%; /* Se adapta al ancho de la pantalla */
+      height: auto; /* Mantiene proporción */
+      display: block;
     }
 
-    footer {
-        font-size: 0.9rem;
+    /* Zoom táctil en móviles */
+    @media (hover: none) and (pointer: coarse) {
+      .img-wrapper {
+        touch-action: pan-y pinch-zoom;
+      }
     }
-
-    /* Puedes hacer el PDF aún más alto en pantallas muy pequeñas si lo deseas */
-    .pdf-container {
-        padding-bottom: 170%;
-    }
-}
