@@ -3,6 +3,8 @@ body {
       padding: 0;
       background: #f2f2f2;
       font-family: sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .img-wrapper {
@@ -62,7 +64,10 @@ body {
     }
 
 img {
-      pointer-events: none;   /* No permite arrastrar la imagen */
-      -webkit-user-drag: none;
+      pointer-events: none;       /* Desactiva toques y gestos */
+      -webkit-user-drag: none;    /* No permite arrastrar en Safari */
       user-select: none;
+      width: 100%;
+      height: auto;
+      touch-action: none;         /* Evita zoom o gestos sobre la imagen */
     }
